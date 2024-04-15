@@ -1,8 +1,8 @@
 {
-	"name": "cat-coding",
+	"name": "vscode-extension-webview-vue-sample",
 	"description": "Cat Coding - A Webview API Sample",
 	"version": "0.0.1",
-	"publisher": "vscode-samples",
+	"publisher": "candywall",
 	"private": true,
 	"license": "MIT",
 	"repository": {
@@ -28,19 +28,23 @@
 		]
 	},
 	"scripts": {
-		"vscode:prepublish": "npm run compile",
+		"vscode:prepublish": "del-cli out -f && make-dir out/views/dist && npm i && cd views && del-cli dist -f && npm i && npm run build && npm run copy && cd .. && npm run compile",
 		"compile": "tsc -p ./",
 		"lint": "eslint \"src/**/*.ts\"",
 		"watch": "tsc -w -p ./",
 		"build-page-watch": "cd views && npm run build-watch"
 	},
 	"devDependencies": {
-		"@types/node": "^16.11.7",
+		"@types/node": "^20.11.1",
 		"@types/vscode": "^1.73.0",
 		"@types/vscode-webview": "^1.57.0",
 		"@typescript-eslint/eslint-plugin": "^5.42.0",
 		"@typescript-eslint/parser": "^5.42.0",
 		"eslint": "^8.26.0",
-		"typescript": "^5.0.2"
+		"typescript": "^5.0.2",
+		"vite": "^5.2.8"
+	},
+	"dependencies": {
+		"del-cli": "^5.1.0"
 	}
 }
