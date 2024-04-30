@@ -1,0 +1,6 @@
+views/**
+.idea/**
+tsconfig.json
+src/**
+.vscode/**
+.gitignore

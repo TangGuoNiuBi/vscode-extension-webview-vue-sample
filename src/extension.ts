@@ -21,7 +21,7 @@ function getWebviewOptions(extensionUri: vscode.Uri): vscode.WebviewOptions {
 	return {
 		// Enable javascript in the webview
 		enableScripts: true,
-		localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'views')]
+		localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'out')]
 	}
 }
 
@@ -69,7 +69,7 @@ class CatCodingPanel {
 		// This happens when the user closes the panel or when the panel is closed programmatically
 		this._panel.onDidDispose(() => this.dispose(), null, this._disposables)
 
-		this._panel.webview.html = this._getHtmlForWebview(panel.webview).replaceAll("{{contextPath}}", panel.webview.asWebviewUri(vscode.Uri.joinPath(extensionUri, "views", "dist")).toString())
+		this._panel.webview.html = this._getHtmlForWebview(panel.webview).replaceAll("{{contextPath}}", panel.webview.asWebviewUri(vscode.Uri.joinPath(extensionUri, "out", "dist")).toString())
 
 		// Handle messages from the webview
 		this._panel.webview.onDidReceiveMessage(
@@ -107,7 +107,7 @@ class CatCodingPanel {
 
 	private _getHtmlForWebview(webview: vscode.Webview) {
 		// Local path to index.html in the webview
-		const indexPath = vscode.Uri.joinPath(this._extensionUri, './views/dist/', 'index.html')
+		const indexPath = vscode.Uri.joinPath(this._extensionUri, './out/dist/', 'index.html')
 		// // Uri to load styles into webview
 		// const stylesResetUri = webview.asWebviewUri(indexPath)
 		console.log(webview.asWebviewUri(indexPath))
