@@ -12,7 +12,7 @@
 			"runtimeExecutable": "${execPath}",
 			"args": ["--extensionDevelopmentPath=${workspaceRoot}"],
 			"outFiles": ["${workspaceFolder}/out/**/*.js"],
-			"preLaunchTask": "npm: watch"
+			// "preLaunchTask": "${defaultBuildTask}" // 调试前在终端中手动执行npm run dev
 		}
 	]
 }

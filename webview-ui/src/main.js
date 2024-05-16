@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import router from './router'
-import { createPinia } from 'pinia'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import store from './store'
 // elementplus
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
@@ -14,12 +13,9 @@ import Particles from "@tsparticles/vue3"
 import { loadFireworksPreset } from '@tsparticles/preset-fireworks'
 import App from './App.vue'
 
-const pinia = createPinia()
-pinia.use(piniaPluginPersistedstate)
-
 const app = createApp(App)
 app.use(router)
-    .use(pinia)
+    .use(store)
     .use(ElementPlus)
     .use(Particles, {
         init: async engine => {

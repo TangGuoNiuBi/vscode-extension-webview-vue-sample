@@ -2,7 +2,7 @@
     <div>
         <vue-particles id="tsparticles" :particlesLoaded="particlesLoaded" :options="options" />
         <div class="formContainer">
-            <h3>xxx系统</h3>
+            <h3>xx系统</h3>
             <el-form ref="loginFormRef" :model="loginForm" :rules="rules" label-width="120px" class="loginForm"
                 :size="formSize" status-icon>
                 <el-form-item label="用户名" prop="username">
@@ -21,16 +21,9 @@
 </template>
 
 <script setup>
-// import options from '../util/particle-options'
 import options from '../util/particle-options-fireworks-preset'
-import axios from 'axios'
-// 粒子特效加载完之后的回调
-const particlesLoaded = async container => {
-    // console.log("Particles container loaded", container)
-}
-
+import { vscode } from '../util/vscode'
 import { reactive, ref } from 'vue'
-import { ElMessage } from 'element-plus'
 const formSize = ref('default')
 
 const loginFormRef = ref('loginFormRef')
@@ -53,8 +46,6 @@ const rules = reactive({
 import useRouterStore from '../store/useUserStore'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-
-const vscode = acquireVsCodeApi()
 
 const submitForm = async (formEl) => {
     if (!formEl) return

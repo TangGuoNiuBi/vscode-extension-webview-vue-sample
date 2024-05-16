@@ -1,6 +1,38 @@
-views/**
-.idea/**
-tsconfig.json
-src/**
+# This file contains all the files/directories that should
+# be ignored (i.e. not included) in the final packaged extension.
+
+# Ignore extension configs
 .vscode/**
-.gitignore
+.idea/**
+
+# Ignore test files
+.vscode-test/**
+out/test/**
+
+# Ignore source code
+src/**
+
+# Ignore all webview-ui files except the build directory
+webview-ui/**
+webview-ui/*.html
+!webview-ui/dist
+
+# Ignore Misc
+.yarnrc
+vsc-extension-quickstart.md
+**/.gitignore
+**/tsconfig.json
+**/vite.config.ts
+**/.eslintrc.json
+**/*.map
+**/*.ts
+
+node_modules/**
+
+
+## local vsix
+*.vsix
+
+# custom scripts
+scripts/** 
+demo/** 

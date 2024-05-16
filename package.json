@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Microsoft/vscode-extension-samples"
+		"url": "https://github.com/TangGuoNiuBi/vscode-extension-webview-vue-sample"
 	},
 	"engines": {
 		"vscode": "^1.74.0"
@@ -22,21 +22,20 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "vue.open",
+				"command": "vue3-webview.open",
 				"title": "open vue page"
-			},
-			{
-				"command": "vue.doRefactor",
-				"title": "doRefactor vue page"
 			}
 		]
 	},
 	"scripts": {
-		"vscode:prepublish": "npm i && del-cli out -f && cd views && npm i && npm run build && cd .. && npm run compile",
+		"install:all": "npm i && cd webview-ui && npm i",
+		"vscode:prepublish": "del-cli out -f && npm run compile && cd webview-ui && npm run build",
+		"dev": "concurrently \"npm run dev:webview\" \"npm run watch\"",
+		"dev:web": "cd webview-ui && npm run dev",
 		"compile": "tsc -p ./",
 		"lint": "eslint \"src/**/*.ts\"",
 		"watch": "tsc -w -p ./",
-		"build-page-watch": "cd views && npm run build-watch"
+		"dev:webview": "cd webview-ui && npm run build:watch"
 	},
 	"devDependencies": {
 		"@types/node": "^20.11.1",
@@ -44,9 +43,10 @@
 		"@types/vscode-webview": "^1.57.0",
 		"@typescript-eslint/eslint-plugin": "^5.42.0",
 		"@typescript-eslint/parser": "^5.42.0",
+		"del-cli": "^5.1.0",
 		"eslint": "^8.26.0",
 		"typescript": "^5.0.2",
 		"vite": "^5.2.8",
-		"del-cli": "^5.1.0"
+		"concurrently": "^8.2.2"
 	}
 }
